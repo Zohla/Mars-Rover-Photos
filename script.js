@@ -7,6 +7,7 @@ async function getSpace(){
     const response = await fetch(apiUrl);
     let jsonResults = await response.json();
     let photos= jsonResults.photos;
+    console.log(photos)
     container.innerHTML += `<p>Earth date taken: ${photos[0].earth_date}</p>`
 
    
@@ -36,7 +37,23 @@ sol.addEventListener('change', (e) => {
     let result = e.target.value;
     console.log(result);
 }) */
-
+function searchSol() {
+    let solDay = sol.value;
+    let newUrl = new URL('https://api.nasa.gov/mars-photos/api/v1/rovers/opportunity/photos?api_key=7C3efywnhiZulYlDVdUYW9M5u71tIS22nmcak61h&')
+    /* let params = new URLSearchParams(newUrl.search) */
+    newUrl.searchParams.set('sol', `${solDay}`)
+    /* params.set('sol', `${solDay}`) */
+    /* let updatedParams = params.toString(); */
+    
+    console.log(newUrl)
+   /*  const findParams = apiUrl.searchParams;
+    findParams.set('sol', '100')
+    apiUrl.search = findParams.toString();
+    let updatedUrl = apiUrl.toString();
+    console.log(solDay)
+    console.log(updatedUrl) */
+    
+}
 function findRover() {
     let rover = rovers.value;
     console.log(rover)
