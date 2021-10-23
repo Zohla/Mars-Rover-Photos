@@ -63,7 +63,34 @@ footer p{
 }
 
 /* CONTACT.html */
+form fieldset{
+  display: flex;
+  flex-direction:column;
+  margin-top: 2rem;
+  
+}
+form fieldset legend{
+  font-weight: 700;
+}
+form fieldset label{
+  margin-top: 1rem;
+}
+form fieldset input{
+  height: 2rem;
+  min-width: 20rem;
+}
+form fieldset button{
+  margin-top: 2rem;
+  width: 10rem;
+  height: 2rem;
+  color: aliceblue;
+  font-size: 1.25rem;
+  border-radius: 5px;
+  background-color: #394088;
+  align-self: center;
+}
 .incorrect{
   border-color: red;
 }
 
+/* Add mediaqueries for contact and pictures */
