@@ -77,7 +77,7 @@ function findRover() {
 function validateName(){
     const nameField = document.querySelector('#name');
     console.log(nameField.value)
-    const nameRegEx =   /^[a-zA-Z\s]*$/;
+    const nameRegEx =   /^[a-zA-ZæøåÆØÅ\s]*$/;
     let nameResult = nameRegEx.test(`${nameField.value}`)
 
     if (nameResult==true && nameField.value.length >0){
@@ -90,7 +90,7 @@ function validateName(){
 }
 function validateSubject() {
     const subjectField = document.querySelector('#subject');
-    const subjectRegEx = /^[a-zA-Z0-9\s]{10,}$/;
+    const subjectRegEx = /^[a-zA-ZæøåÆØÅ0-9\s]{10,}$/;
     let subjectResult = subjectRegEx.test(`${subjectField.value}`)
     
     if (subjectResult == true){
@@ -103,7 +103,7 @@ function validateSubject() {
 
 function validateEmail() {
     const emailField = document.querySelector('#mail');
-    const emailRegEx = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+    const emailRegEx = /^[a-zA-ZæøåÆØÅ0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
     let emailResult = emailRegEx.test(`${emailField.value}`)
 
     if (emailResult == true && emailField.value.length > 0){
@@ -111,5 +111,18 @@ function validateEmail() {
     } else{
         emailField.classList.add('incorrect')
     }
+    
+}
+function validateAdress() {
+    const adressField = document.querySelector('#adress');
+    const adressRegEx = /^[a-zA-ZæøåÆØÅ0-9\s]{25,}$/
+    let adressResult = adressRegEx.test(`${adressField.value}`)
+
+    if (adressResult == true){
+        adressField.classList.remove('incorrect')
+    } else{
+        adressField.classList.add('incorrect')
+    }
+    
     
 }
