@@ -9,7 +9,8 @@ async function getSpace(){
         const response = await fetch(apiUrl);
         let jsonResults = await response.json();
         let photos= jsonResults.photos;
-        earthDayContainer.innerHTML += `<p class="earth-day">Earth date taken: ${photos[0].earth_date}</p>`
+        console.log(jsonResults);
+        earthDayContainer.innerHTML += `<p class="earth-day">Taken: ${photos[0].earth_date} by ${photos[0].rover.name}</p>`
     
         for (let i = 0; i < photos.length; i++) {
             const element = photos[i];
@@ -17,7 +18,7 @@ async function getSpace(){
             if (i >10){
                 break;
             }
-            container.innerHTML+= `<div class="image" style="background-image: url('${element.img_src}')"></div>`
+            container.innerHTML+= `<a href="details.html?" class="image" style="background-image: url('${element.img_src}')"></a>`
         }
     }catch(error) {
         container.innerHTML = `Error: ${error.message}`
@@ -34,6 +35,8 @@ sol.addEventListener('change', (e) => {
     let result = e.target.value;
     console.log(result);
 }) */
+
+
 //todo Make a function to choose "sol-date"
 
 function searchSol() {
@@ -67,4 +70,28 @@ function findRover() {
 } */
 
 
+//Contact.html
 
+//form validation
+
+function validateName(){
+    const nameField = document.querySelector('#name');
+    console.log(nameField.value)
+    const nameRegEx =   /^[a-zA-Z\s]*$/;
+    let nameResult = nameRegEx.test(`${nameField.value}`)
+
+    if (nameResult==true && nameField.value.length >0){
+        nameField.classList.remove('incorrect');
+        
+
+    } else{
+        nameField.classList.add('incorrect');
+        console.log(nameResult)
+
+    }
+
+}
+function validateSubject() {
+    const sunbjectField =
+    
+}
