@@ -2,29 +2,25 @@ let apiUrl = `https://api.nasa.gov/mars-photos/api/v1/rovers/opportunity/photos?
 const container = document.querySelector('.container');
 const loader = document.querySelector('.loader');
 const sol = document.getElementById('sol');
+const earthDayContainer = document.querySelector('.earth-day')
 
 async function getSpace(){
-    const response = await fetch(apiUrl);
-    let jsonResults = await response.json();
-    let photos= jsonResults.photos;
-    console.log(photos)
-    container.innerHTML += `<p>Earth date taken: ${photos[0].earth_date}</p>`
-
-   
-    for (let i = 0; i < photos.length; i++) {
-        const element = photos[i];
-//todo Add limit to photos shown?
-        if (i >10){
-            break;
+    try{
+        const response = await fetch(apiUrl);
+        let jsonResults = await response.json();
+        let photos= jsonResults.photos;
+        earthDayContainer.innerHTML += `<p class="earth-day">Earth date taken: ${photos[0].earth_date}</p>`
+    
+        for (let i = 0; i < photos.length; i++) {
+            const element = photos[i];
+    //todo Add limit to photos shown?
+            if (i >10){
+                break;
+            }
+            container.innerHTML+= `<div class="image" style="background-image: url('${element.img_src}')"></div>`
         }
-
-       
-        
-        
-        
-        container.innerHTML+= `<div class="image" style="background-image: url('${element.img_src}')"></div>`
-        
-        
+    }catch(error) {
+        container.innerHTML = `Error: ${error.message}`
     }
     
 }
@@ -41,20 +37,12 @@ sol.addEventListener('change', (e) => {
 //todo Make a function to choose "sol-date"
 
 function searchSol() {
+    
     let solDay = sol.value;
     let newUrl = new URL('https://api.nasa.gov/mars-photos/api/v1/rovers/opportunity/photos?api_key=7C3efywnhiZulYlDVdUYW9M5u71tIS22nmcak61h&')
-    /* let params = new URLSearchParams(newUrl.search) */
     newUrl.searchParams.set('sol', `${solDay}`)
-    /* params.set('sol', `${solDay}`) */
-    /* let updatedParams = params.toString(); */
-    
     console.log(newUrl)
-   /*  const findParams = apiUrl.searchParams;
-    findParams.set('sol', '100')
-    apiUrl.search = findParams.toString();
-    let updatedUrl = apiUrl.toString();
-    console.log(solDay)
-    console.log(updatedUrl) */
+    return newUrl;
     
 }
 function findRover() {

@@ -16,18 +16,22 @@
     </nav>
     <h1>Mars Rover Photos</h1>
     <div class="main">
-        <label for="rovers">Select a rover</label>
-        <select name="rovers" id="rovers" onchange="findRover()">
-            <option value="curiosity">Curiosity</option>
-            <option value="opportunity">Opportunity</option>
-            <option value="spirit">Spirit</option>
-        </select>
-        <form action=""  >
-            <label for="sol">Choose the sol(martian day)</label>
-            <input name="sol" id="sol" type="number" value="0" onchange="searchSol()">
-        </form>
+        <div class="selectors">
+            <label for="rovers">Select a rover</label>
+            <select name="rovers" id="rovers" onchange="findRover()">
+                <option value="curiosity">Curiosity</option>
+                <option value="opportunity">Opportunity</option>
+                <option value="spirit">Spirit</option>
+            </select>
+            <form action=""  >
+                <label for="sol">Choose the sol(martian day) after the rovers landing</label>
+                <input name="sol" id="sol" type="number" value="0" onchange="searchSol()">
+            </form>
+    
+        </div>
 
         <div class="loader"></div>
+        <div class="earth-day"></div>
         <div class="container"></div>
 
     </div>
