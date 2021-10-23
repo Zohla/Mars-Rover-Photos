@@ -82,9 +82,11 @@ function validateName(){
 
     if (nameResult==true && nameField.value.length >0){
         nameField.classList.remove('incorrect');
+        return true;
     } else{
         nameField.classList.add('incorrect');
         console.log(nameResult)
+        return false;
     }
 
 }
@@ -95,8 +97,10 @@ function validateSubject() {
     
     if (subjectResult == true){
         subjectField.classList.remove('incorrect')
+        return true;
     } else{
         subjectField.classList.add('incorrect')
+        return false;
     }
     
 }
@@ -108,8 +112,10 @@ function validateEmail() {
 
     if (emailResult == true && emailField.value.length > 0){
         emailField.classList.remove('incorrect')
+        return true;
     } else{
         emailField.classList.add('incorrect')
+        return false;
     }
     
 }
@@ -120,9 +126,40 @@ function validateAdress() {
 
     if (adressResult == true){
         adressField.classList.remove('incorrect')
+        return true;
     } else{
         adressField.classList.add('incorrect')
+        return false;
     }
     
     
 }
+function validateForm() {
+    let validForm = true;
+    if (validateName() == false){
+        validForm = false;
+    }
+    if (validateSubject() == false){
+        validForm = false
+    }
+    if (validateEmail() == false){
+        validForm = false
+    }
+    if (validateAdress() == false){
+        validForm = false
+    }
+    return validForm;
+    
+}
+ const submit = document.querySelector('.submit');
+ const formContainer = document.querySelector('.form-container')
+
+ submit.addEventListener('click',(e)) {
+     if (validateForm() == false){
+         e.preventDefault();
+     } else {
+         formContainer.innerHTML= `Your form is submitted. Thank you for reaching out to us!`
+         
+     }
+     
+ }
