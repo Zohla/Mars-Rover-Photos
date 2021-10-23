@@ -82,16 +82,34 @@ function validateName(){
 
     if (nameResult==true && nameField.value.length >0){
         nameField.classList.remove('incorrect');
-        
-
     } else{
         nameField.classList.add('incorrect');
         console.log(nameResult)
-
     }
 
 }
 function validateSubject() {
-    const sunbjectField =
+    const subjectField = document.querySelector('#subject');
+    const subjectRegEx = /^[a-zA-Z0-9\s]{10,}$/;
+    let subjectResult = subjectRegEx.test(`${subjectField.value}`)
+    
+    if (subjectResult == true){
+        subjectField.classList.remove('incorrect')
+    } else{
+        subjectField.classList.add('incorrect')
+    }
+    
+}
+
+function validateEmail() {
+    const emailField = document.querySelector('#mail');
+    const emailRegEx = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+    let emailResult = emailRegEx.test(`${emailField.value}`)
+
+    if (emailResult == true && emailField.value.length > 0){
+        emailField.classList.remove('incorrect')
+    } else{
+        emailField.classList.add('incorrect')
+    }
     
 }
