@@ -7,18 +7,46 @@ body {
   font-family: "Muli", sans-serif;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  flex-wrap: wrap;
+  align-items: center;
+  
 }
-.container {
+#rovers{
+  margin: 1rem;
+}
+.selectors{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto;
+  max-width: 50%;
+}
+.container, .earth-day {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 75%;
+  margin: auto;
+  justify-content: center;
+  
+  
   /* align-items: center;
   justify-content: center; */
-  width: 35%;
-  margin: auto;
+ /*  width: 35%; */
+  /* margin: auto; */
 }
 
 .image {
   height: 25rem;
+  width: 35rem;
+  background-size: auto;
   background-repeat: no-repeat;
   margin-top: 2rem;
-  border: solid 5px #000;
+  /* border: solid 5px #000; */
+}
+.image:hover{
+  
+  transform: translateY(-2px);
+  filter: drop-shadow(5px 5px 2px #111010);
+  
+  
 }
