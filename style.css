@@ -42,7 +42,7 @@ body {
 .image {
   height: 25rem;
   width: 35rem;
-  background-size: auto;
+  /* background-size: auto; */
   background-repeat: no-repeat;
   margin-top: 2rem;
   /* border: solid 5px #000; */
