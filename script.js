@@ -5,6 +5,8 @@ const sol = document.getElementById('sol');
 const earthDayContainer = document.querySelector('.earth-day')
 
 async function getSpace(){
+    container.textContent = '';
+    earthDayContainer.textContent = '';
     try{
         const response = await fetch(apiUrl);
         let jsonResults = await response.json();
@@ -25,12 +27,19 @@ async function getSpace(){
     }
     
 }
-getSpace();
-/* rovers.addEventListener('change', (event) => {
-    let result = event.target.value;
-    console.log(result);
-})
 
+
+ rovers.addEventListener('change', (event) => {
+     
+    let result = event.target.value;
+    
+    apiUrl = `https://api.nasa.gov/mars-photos/api/v1/rovers/${result}/photos?sol=100&api_key=7C3efywnhiZulYlDVdUYW9M5u71tIS22nmcak61h`
+    console.log(result);
+    console.log(apiUrl)
+    getSpace();
+    
+})
+/*
 sol.addEventListener('change', (e) => {
     let result = e.target.value;
     console.log(result);
@@ -154,12 +163,14 @@ function validateForm() {
  const submit = document.querySelector('.submit');
  const formContainer = document.querySelector('.form-container')
 
- submit.addEventListener('click',(e)) {
-     if (validateForm() == false){
-         e.preventDefault();
-     } else {
-         formContainer.innerHTML= `Your form is submitted. Thank you for reaching out to us!`
-         
-     }
-     
+ function submitForm(){
+    if (validateForm() == false){
+        // This does not Work - how can i prevent default?
+        submit.preventDefault();
+    } else {
+        formContainer.innerHTML= `Your form is submitted. Thank you for reaching out to us!`
+        
+    }
+
  }
+ submit.addEventListener('submit', submitForm)
