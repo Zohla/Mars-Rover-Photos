@@ -14,18 +14,26 @@ body {
 a{
   margin-left: .25rem;
   text-decoration: none;
+  list-style: none;
   
 }
 a:visited{
   color: #000;
+  
 }
 a:hover{
   color: #394088;
+  font-weight: 700;
 }
+
 
 #rovers{
   margin: 1rem;
   /*! Style more:make larger and remove gray background */
+}
+.choose{
+  font-weight: 700;
+  color: #394088;
 }
 .selectors{
   display: flex;
