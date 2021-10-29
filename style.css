@@ -9,53 +9,53 @@ body {
   flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
-  
 }
-a{
-  margin-left: .25rem;
+a {
+  margin-left: 0.25rem;
   text-decoration: none;
   list-style: none;
-  
 }
-a:visited{
+a:visited {
   color: #000;
-  
 }
-a:hover{
+a:hover {
   color: #394088;
   font-weight: 700;
 }
 
-
-#rovers{
+#rovers,
+#sol {
   margin: 1rem;
-  /*! Style more:make larger and remove gray background */
+  height: 2rem;
+  background-color: aliceblue;
+  border: 0.5px solid black;
 }
-.choose{
+
+.choose {
   font-weight: 700;
   color: #394088;
 }
-.selectors{
+.selectors {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: auto;
   max-width: 50%;
 }
-.container, .earth-day {
+.container,
+.earth-day {
   display: flex;
   flex-wrap: wrap;
   max-width: 75%;
   margin: auto;
   justify-content: center;
-  
-  
+
   /* align-items: center;
   justify-content: center; */
- /*  width: 35%; */
+  /*  width: 35%; */
   /* margin: auto; */
 }
-.earth-day{
+.earth-day {
   font-size: 1.25rem;
   font-weight: 600;
   margin-top: 1rem;
@@ -68,39 +68,40 @@ a:hover{
   margin: 1rem 0;
   /* border: solid 5px #000; */
 }
-.image:hover{
-  
+.image:hover {
   transform: translateY(-2px);
   filter: drop-shadow(5px 5px 2px #111010);
-  
-  
 }
-footer{
+footer {
   background-color: aliceblue;
   width: 100%;
 }
-footer p{
+footer p {
   text-align: center;
 }
-
-/* CONTACT.html */
-form fieldset{
-  display: flex;
-  flex-direction:column;
-  margin-top: 2rem;
-  
+/* DETAILS.html */
+.card div {
+  height: 40rem;
+  width: 60rem;
+  background-repeat: no-repeat;
 }
-form fieldset legend{
+/* CONTACT.html */
+form fieldset {
+  display: flex;
+  flex-direction: column;
+  margin-top: 2rem;
+}
+form fieldset legend {
   font-weight: 700;
 }
-form fieldset label{
+form fieldset label {
   margin-top: 1rem;
 }
-form fieldset input{
+form fieldset input {
   height: 2rem;
   min-width: 20rem;
 }
-form fieldset button{
+form fieldset button {
   margin-top: 2rem;
   width: 10rem;
   height: 2rem;
@@ -110,8 +111,16 @@ form fieldset button{
   background-color: #394088;
   align-self: center;
 }
-.incorrect{
+span {
+  color: red;
+}
+.incorrect {
   border-color: red;
+}
+.submit {
+  background-color: aliceblue;
+  color: #000;
+  border: 1px solid black;
 }
 
 /* Add mediaqueries for contact and pictures */
