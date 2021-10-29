@@ -7,8 +7,8 @@ const earthDayContainer = document.querySelector('.earth-day')
 container.innerHTML = `<p class= 'choose'>Choose a rover to see pictures they have taken on their x'th day on mars</p>`
 
 async function getSpace(){
-    container.textContent = '';
-    earthDayContainer.textContent = '';
+    container.textContent ='';
+    earthDayContainer.textContent ='';
     try{
         const response = await fetch(baseUrl);
         let jsonResults = await response.json();
@@ -17,7 +17,7 @@ async function getSpace(){
         earthDayContainer.innerHTML += `<p class="earth-day">Taken: ${photos[0].earth_date} by:  <a href="rover.html?/${photos[0].rover.name.toLowerCase()}"> ${photos[0].rover.name}</a></p>`
     
         for (let i = 0; i < photos.length; i++) {
-            const element = photos[i];
+            const element = photos[i];            
     //Adds limit to photos shown
             if (i >10){
                 break;
@@ -25,7 +25,11 @@ async function getSpace(){
             container.innerHTML+= `<a href="details.html?id=${element.id}&rover=${resultRover}" class="image" style="background-image: url('${element.img_src}')"></a>`
         }
     }catch(error) {
-        container.innerHTML = `Error: ${error.message}`
+        // if (photos == 'undefined') {
+        //     container.innerHTML ='Sorry, no photos from rover this sol'
+        // } else{
+        //     container.innerHTML = `Error: ${error.message}`
+        // }
     }
     
 }
@@ -42,20 +46,26 @@ let resultRover;
 })
 
 //todo Make a function to choose "sol-date"
-/* const solForm = document.querySelector('.sol-form');
+const solForm = document.querySelector('.sol-form');
+
 
 solForm.addEventListener('change', (e) => {
     let solDay = e.target.value;
+    // const params = new URLSearchParams(baseUrl);
+    // const solQuery = params.get('sol')
+    
     let parsedSolInt = parseInt(solDay);
-    let newUrl = new URL(`${apiUrl}`)
-    newUrl.searchParams.set('sol', `=${parsedSolInt}`)
+    let newUrl = new URL(`${baseUrl}`)
+    newUrl.searchParams.set('sol', `${parsedSolInt}`)
+    baseUrl = newUrl;
+    console.log(parsedSolInt)
     console.log(newUrl)
-    getSpace();   
+     getSpace();   
 })
 
 solForm.addEventListener('submit', (e)=>{
     e.preventDefault();
-}) */
+}) 
 
 
 
