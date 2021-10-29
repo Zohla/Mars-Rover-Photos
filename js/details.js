@@ -1,29 +1,33 @@
 
 const querystring= document.location.search;
 const params = new URLSearchParams(querystring);
-const id = params.get('id');
+const photoId = params.get('id');
+console.log(photoId)
 const rover = params.get('rover');
 const apiKey = 'api_key=7C3efywnhiZulYlDVdUYW9M5u71tIS22nmcak61h'
 
 
-const apiUrl = `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?id=${id}&sol=100&${apiKey}`;
+const apiUrl = `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?id=${photoId}&sol=100&${apiKey}`;
 
-
+let displayPhoto='';
 
 const container = document.querySelector('.photo-container')
+
 async function getDetails() {
     container.textContent = '';
     const response = await fetch(apiUrl);
     const result = await response.json();
-    let photo= result.photos[0];
-    //!shows only first photo either way,need to use id properly
-    console.log(photo)
-    
-    container.innerHTML = 
-    `<div class="card"><div style="background-image: url('${photo.img_src}')"></div><p>This picture is taken by ${photo.rover.name} on ${photo.earth_date}.<br> This image is shot with ${photo.rover.name}s ${photo.camera.full_name}. </p></div>`   
-    
-    
-    
+    let photo= result.photos;
+    for (let i = 0; i < photo.length; i++) {
+        const element = photo[i];
+        console.log(element)
+        if (element.id == photoId) {
+            displayPhoto = element.img_src;
+            console.log(element.id)
+            container.innerHTML = 
+            `<div class="card"><p>This picture is taken by ${element.rover.name} on ${element.earth_date}.<br> This image is shot with ${element.rover.name}s ${element.camera.full_name}. </p><div style="background-image: url('${displayPhoto}')"></div></div>`   
+        }
+    }
 }
 getDetails();
  
