@@ -13,10 +13,10 @@ body {
   font-family: "Muli", sans-serif;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
   align-items: center;
   height: 100vh;
 }
+
 nav {
   width: 100%;
   display: flex;
@@ -69,22 +69,16 @@ a:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* margin: auto; */
   padding: 1rem;
   width: 100%;
 }
 .container,
 .earth-day {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   max-width: 75%;
   margin: auto;
   justify-content: center;
-
-  /* align-items: center;
-  justify-content: center; */
-  /*  width: 35%; */
-  /* margin: auto; */
 }
 .earth-day {
   font-size: 1.25rem;
@@ -92,12 +86,10 @@ a:hover {
   margin-top: 1rem;
 }
 .image {
-  height: 25rem;
-  width: 35rem;
-  /* background-size: auto; */
+  height: 30rem;
+  width: 30rem;
   background-repeat: no-repeat;
   margin: 1rem 0;
-  /* border: solid 5px #000; */
 }
 .image:hover {
   transform: translateY(-2px);
@@ -113,15 +105,18 @@ footer {
 footer p {
   font-weight: 700;
   margin: auto;
+  padding: 2rem;
 }
 /* DETAILS.html */
-.photo-container {
-}
+/* .photo-container {
+  display: flex;
+} */
 .card {
   display: flex;
   align-items: center;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: flex-start;
+  height: 100vh;
 }
 .card div {
   height: 30rem;
@@ -131,6 +126,7 @@ footer p {
 .card p {
   margin: 2rem;
 }
+*/
 /* CONTACT.html */
 form fieldset {
   display: flex;
@@ -167,9 +163,16 @@ span {
   background-color: aliceblue;
   color: #000;
   border: 1px solid black;
+  margin-bottom: 2rem;
 }
 .submit:hover {
   background-color: var(--main-color);
 }
 
-/* Add mediaqueries for contact and pictures */
+/* Add mediaqueries*/
+/* .container a {
+  height: 30rem;
+  width: 30rem;
+  background-repeat: no-repeat;
+  display: block;
+} */
