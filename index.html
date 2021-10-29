@@ -19,14 +19,17 @@
         <div class="selectors">
             <label for="rovers">Select a rover</label>
             <select name="rovers" id="rovers">
+                <option value="" disabled selected hidden>Choose...</option>
                 <option value="curiosity">Curiosity</option>
                 <option value="opportunity">Opportunity</option>
                 <option value="spirit">Spirit</option>
+                <option value="perseverance">Perseverance</option>
             </select>
-            <form action=""  >
+            <form action="/" class="sol-form"  >
                 <label for="sol">Choose the sol(martian day) after the rovers landing</label>
-                <input name="sol" id="sol" type="number" value="0" onchange="searchSol()">
+                <input name="sol" id="sol" type="number" value="0">
             </form>
+
         </div>
         <div class="loader"></div>
         <div class="earth-day"></div>
