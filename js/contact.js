@@ -1,5 +1,8 @@
 /*****************Contact.html************************/
-
+const nameLabel=document.querySelector('.name-label');
+const subjectLabel = document.querySelector('.subject-label')
+const mailLabel = document.querySelector('.mail-label');
+const adressLabel = document.querySelector('.adress-label');
 
 //form validation
 
@@ -61,20 +64,32 @@ function validateAdress() {
         return false;
     }   
 }
-
+const span = document.querySelectorAll('span')
 function validateForm() {
     let validForm = true;
     if (validateName() == false){
+        nameLabel.innerHTML += `<span> Please fill in your name</span>`
         validForm = false;
+    } else{
+        nameLabel.innerHTML ='Name:'
     }
     if (validateSubject() == false){
+        subjectLabel.innerHTML += `<span> Subject must be longer</span>`
         validForm = false
+    } else{
+        subjectLabel.innerHTML='Subject:'
     }
     if (validateEmail() == false){
+        mailLabel.innerHTML += `<span> Please fill in a valid emailadress</span>`
         validForm = false
+    } else{
+        mailLabel.innerHTML = 'Email:'
     }
     if (validateAdress() == false){
+        adressLabel.innerHTML +=`<span> Adress must be longer</span>`
         validForm = false
+    } else{
+        adressLabel.innerHTML = 'Adress:'
     }
     return validForm;   
 }
@@ -83,8 +98,13 @@ function validateForm() {
 
  formContainer.addEventListener('submit', (e)=>{
     e.preventDefault();
+    adressLabel.innerHTML = 'Adress:'
+    mailLabel.innerHTML = 'Email:'
+    subjectLabel.innerHTML='Subject:'
+    nameLabel.innerHTML ='Name:'
+//!hacky way of showing and removing errormessages - fix!
     if (validateForm() == false){
     } else {
-        formContainer.innerHTML= `Your form is submitted. Thank you for reaching out to us!`
+        formContainer.innerHTML= `<h3 class="succes-message">Your form is submitted. Thank you for reaching out to us!</h3>`
     }
 })
