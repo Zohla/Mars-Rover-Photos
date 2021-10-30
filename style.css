@@ -66,6 +66,7 @@ a:hover {
 
 .choose {
   font-weight: 700;
+  font-size: 1.5rem;
   color: #394088;
 }
 .selectors {
@@ -80,6 +81,11 @@ a:hover {
   flex-direction: column;
 }
 .sol-form label {
+  align-self: center;
+}
+.error {
+  color: red;
+  font-size: 1.5rem;
   align-self: center;
 }
 .container {
@@ -185,14 +191,24 @@ span {
 .submit:hover {
   background-color: var(--main-color);
 }
+.succes-message {
+  margin-top: 3rem;
+}
 
 /* ROVER.html */
 .rover-details {
   height: 100vh;
   margin-top: 5rem;
   font-size: 1.5rem;
+  align-self: center;
+  max-width: 50%;
 }
 .rover-details p {
   margin-bottom: 0.5rem;
 }
 /* Add mediaqueries*/
+@media only screen and (max-width: 992px) {
+  .rover-details {
+    max-width: 100%;
+  }
+}
