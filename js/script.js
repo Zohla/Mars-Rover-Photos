@@ -14,7 +14,7 @@ async function getSpace(){
         let jsonResults = await response.json();
         let photos= jsonResults.photos;
         console.log(photos);
-        earthDayContainer.innerHTML += `<p class="earth-day">Taken: ${photos[0].earth_date} by:  <a href="rover.html?/${photos[0].rover.name.toLowerCase()}" class="rover-link"> ${photos[0].rover.name}</a></p>`
+        earthDayContainer.innerHTML += `<p class="earth-day">Taken: ${photos[0].earth_date} by:  <a href="rover.html?rover=${photos[0].rover.name.toLowerCase()}" class="rover-link"> ${photos[0].rover.name}</a></p>`
     
         for (let i = 0; i < photos.length; i++) {
             const element = photos[i];            
@@ -32,18 +32,10 @@ async function getSpace(){
         }
 
         console.log(error)
-/*          if (error == 'undefined') {
-             container.innerHTML ='Sorry, no photos from rover this sol'
-         } else{
-             container.innerHTML = `Error: ${error.message}`
-         }
- */    }
+    }
     
 }
 
-//funskjon for å hente rover og redirekte til annen side
-//url med rovernavn->bytte navn og henge på info i querystringen(landingsdato, bilder tatt osv)
-//https://api.nasa.gov/mars-photos/api/v1/rovers/opportunity?api_key=7C3efywnhiZulYlDVdUYW9M5u71tIS22nmcak61h
 let resultRover;
  rovers.addEventListener('change', (event) => {
      
