@@ -4,10 +4,11 @@ const params = new URLSearchParams(querystring);
 const photoId = params.get('id');
 console.log(photoId)
 const rover = params.get('rover');
+const sol = params.get('sol')
 const apiKey = 'api_key=7C3efywnhiZulYlDVdUYW9M5u71tIS22nmcak61h'
 
 
-const apiUrl = `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?id=${photoId}&sol=100&${apiKey}`;
+const apiUrl = `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}/photos?id=${photoId}&sol=${sol}&${apiKey}`;
 
 let displayPhoto='';
 
