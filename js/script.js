@@ -1,21 +1,23 @@
 let baseUrl =`https://api.nasa.gov/mars-photos/api/v1/`
-// let apiUrl = `https://api.nasa.gov/mars-photos/api/v1/rovers/opportunity/photos?sol=100&api_key=7C3efywnhiZulYlDVdUYW9M5u71tIS22nmcak61h`
 const container = document.querySelector('.container');
 const loader = document.querySelector('.loader');
 const sol = document.getElementById('sol');
 const earthDayContainer = document.querySelector('.earth-day')
-container.innerHTML = `<p class= 'choose'>Choose a rover to see pictures they have taken on their x'th day on mars</p>`
+loader.innerHTML = `<p class= 'choose'>Choose a rover to see pictures they have taken on their x'th day(sol) on mars</p>`
+let solDay = 100;
 
 async function getSpace(){
     container.textContent ='';
     earthDayContainer.textContent ='';
+    loader.innerHTML= '<p>Loading...</p>';
     try{
         const response = await fetch(baseUrl);
         let jsonResults = await response.json();
         let photos= jsonResults.photos;
         console.log(photos);
+        loader.innerHTML=';'
         earthDayContainer.innerHTML += `<p class="earth-day">Taken: ${photos[0].earth_date} by:  <a href="rover.html?rover=${photos[0].rover.name.toLowerCase()}" class="rover-link"> ${photos[0].rover.name}</a></p>`
-    
+        
         for (let i = 0; i < photos.length; i++) {
             const element = photos[i];            
     //Adds limit to photos shown
@@ -26,17 +28,17 @@ async function getSpace(){
         }
     }catch(error) {
         if (error.message.startsWith('Cannot read properties of undefined')) {
-            container.innerHTML = `Sorry, it looks like there's no pictures from this rover at that sol.`
+            container.innerHTML = `Sorry, it looks like there's no pictures from <a href="rover.html?rover=${photos[0].rover.name.toLowerCase()}" class="rover-link"> ${photos[0].rover.name}</a> at that sol. The rovers don't have pictures from all days(sols), but the max sol for thr rover can be found if you click the rover name`
         } else{
-            container.innerHTML = `Error: ${error.message}`
+            container.innerHTML = `<p class="error">Error: ${error.message}<p>`
         }
 
         console.log(error)
     }
     
 }
-
-let resultRover;
+//Get result from choosing a rover and change baseUrl
+let resultRover = 'Choose...';
  rovers.addEventListener('change', (event) => {
      
     resultRover = event.target.value;   
@@ -44,27 +46,30 @@ let resultRover;
     getSpace();
 })
 
-//todo Make a function to choose "sol-date"
+//Get result from choosing a sol and add error if rover not chosen
 const solForm = document.querySelector('.sol-form');
+const roverSelect = document.querySelector('#rovers')
 
-let solDay;
 solForm.addEventListener('change', (e) => {
-    solDay = e.target.value;
-    // const params = new URLSearchParams(baseUrl);
-    // const solQuery = params.get('sol')
-    
+    solDay = e.target.value;    
     let parsedSolInt = parseInt(solDay);
     let newUrl = new URL(`${baseUrl}`)
     newUrl.searchParams.set('sol', `${parsedSolInt}`)
     baseUrl = newUrl;
     console.log(parsedSolInt)
     console.log(newUrl)
-     getSpace();   
+    if (resultRover == 'Choose...') {
+        container.innerHTML = `<p class="error">Please choose a rover</p>`
+        roverSelect.style.borderColor='red';        
+    }else{
+        roverSelect.style.borderColor='black';
+        getSpace(); 
+    }       
 })
 
-solForm.addEventListener('submit', (e)=>{
+/* solForm.addEventListener('submit', (e)=>{
     e.preventDefault();
-}) 
+}) */ 
 
 
 
