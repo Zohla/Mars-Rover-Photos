@@ -22,11 +22,11 @@ async function getSpace(){
             if (i >10){
                 break;
             }
-            container.innerHTML+= `<a href="details.html?id=${element.id}&rover=${resultRover}" class="image" style="background-image: url('${element.img_src}')"></a>`
+            container.innerHTML+= `<a href="details.html?id=${element.id}&rover=${resultRover}&sol=${solDay}" class="image" style="background-image: url('${element.img_src}')"></a>`
         }
     }catch(error) {
         if (error.message.startsWith('Cannot read properties of undefined')) {
-            container.innerHTML = `Sorry, it looks like there's no pictures from this rover at that sol`
+            container.innerHTML = `Sorry, it looks like there's no pictures from this rover at that sol.`
         } else{
             container.innerHTML = `Error: ${error.message}`
         }
@@ -55,9 +55,9 @@ let resultRover;
 //todo Make a function to choose "sol-date"
 const solForm = document.querySelector('.sol-form');
 
-
+let solDay;
 solForm.addEventListener('change', (e) => {
-    let solDay = e.target.value;
+    solDay = e.target.value;
     // const params = new URLSearchParams(baseUrl);
     // const solQuery = params.get('sol')
     
