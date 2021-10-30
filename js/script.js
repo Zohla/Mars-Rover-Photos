@@ -14,7 +14,7 @@ async function getSpace(){
         let jsonResults = await response.json();
         let photos= jsonResults.photos;
         console.log(photos);
-        earthDayContainer.innerHTML += `<p class="earth-day">Taken: ${photos[0].earth_date} by:  <a href="rover.html?/${photos[0].rover.name.toLowerCase()}"> ${photos[0].rover.name}</a></p>`
+        earthDayContainer.innerHTML += `<p class="earth-day">Taken: ${photos[0].earth_date} by:  <a href="rover.html?/${photos[0].rover.name.toLowerCase()}" class="rover-link"> ${photos[0].rover.name}</a></p>`
     
         for (let i = 0; i < photos.length; i++) {
             const element = photos[i];            
@@ -25,12 +25,19 @@ async function getSpace(){
             container.innerHTML+= `<a href="details.html?id=${element.id}&rover=${resultRover}" class="image" style="background-image: url('${element.img_src}')"></a>`
         }
     }catch(error) {
-        // if (photos == 'undefined') {
-        //     container.innerHTML ='Sorry, no photos from rover this sol'
-        // } else{
-        //     container.innerHTML = `Error: ${error.message}`
-        // }
-    }
+        if (error.message.startsWith('Cannot read properties of undefined')) {
+            container.innerHTML = `Sorry, it looks like there's no pictures from this rover at that sol`
+        } else{
+            container.innerHTML = `Error: ${error.message}`
+        }
+
+        console.log(error)
+/*          if (error == 'undefined') {
+             container.innerHTML ='Sorry, no photos from rover this sol'
+         } else{
+             container.innerHTML = `Error: ${error.message}`
+         }
+ */    }
     
 }
 
