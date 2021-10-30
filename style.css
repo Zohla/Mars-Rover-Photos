@@ -72,18 +72,28 @@ a:hover {
   padding: 1rem;
   width: 100%;
 }
-.container,
-.earth-day {
+.sol-form {
   display: flex;
   flex-direction: column;
-  max-width: 75%;
-  margin: auto;
+}
+.sol-form label {
+  align-self: center;
+}
+.container/* ,
+.earth-day */ {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
   justify-content: center;
 }
 .earth-day {
   font-size: 1.25rem;
   font-weight: 600;
   margin-top: 1rem;
+  align-self: center;
+}
+.rover-link {
+  color: var(--main-color);
 }
 .image {
   height: 30rem;
@@ -126,12 +136,13 @@ footer p {
 .card p {
   margin: 2rem;
 }
-*/
+
 /* CONTACT.html */
 form fieldset {
   display: flex;
   flex-direction: column;
   margin-top: 2rem;
+  padding: 0 1rem;
 }
 form fieldset legend {
   font-weight: 700;
@@ -170,9 +181,3 @@ span {
 }
 
 /* Add mediaqueries*/
-/* .container a {
-  height: 30rem;
-  width: 30rem;
-  background-repeat: no-repeat;
-  display: block;
-} */
