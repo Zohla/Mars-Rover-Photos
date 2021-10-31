@@ -5,7 +5,7 @@ const sol = document.getElementById('sol');
 const earthDayContainer = document.querySelector('.earth-day')
 loader.innerHTML = `<p class= 'choose'>Choose a rover to see pictures they have taken on their x'th day(sol) on mars</p>`
 let solDay = 100;
-
+let rover;
 async function getSpace(){
     container.textContent ='';
     earthDayContainer.textContent ='';
@@ -16,6 +16,7 @@ async function getSpace(){
         let photos= jsonResults.photos;
         console.log(photos);
         loader.innerHTML=';'
+        rover = photos[0].rover.name;
         earthDayContainer.innerHTML += `<p class="earth-day">Taken: ${photos[0].earth_date} by:  <a href="rover.html?rover=${photos[0].rover.name.toLowerCase()}" class="rover-link"> ${photos[0].rover.name}</a></p>`
         
         for (let i = 0; i < photos.length; i++) {
@@ -28,7 +29,7 @@ async function getSpace(){
         }
     }catch(error) {
         if (error.message.startsWith('Cannot read properties of undefined')) {
-            container.innerHTML = `Sorry, it looks like there's no pictures from <a href="rover.html?rover=${photos[0].rover.name.toLowerCase()}" class="rover-link"> ${photos[0].rover.name}</a> at that sol. The rovers don't have pictures from all days(sols), but the max sol for thr rover can be found if you click the rover name`
+            container.innerHTML = `<p>Sorry, it looks like there's no pictures from ${rover}</a> at that sol. The rovers don't have pictures from all days(sols), but the max sol for this rover can be found<a href="rover.html?rover=${rover.toLowerCase()}" class="bold">here</a>.</p>`
         } else{
             container.innerHTML = `<p class="error">Error: ${error.message}<p>`
         }
@@ -66,10 +67,10 @@ solForm.addEventListener('change', (e) => {
         getSpace(); 
     }       
 })
-
-/* solForm.addEventListener('submit', (e)=>{
+//avaoid reload when using keyboard to change sol
+solForm.addEventListener('submit', (e)=>{
     e.preventDefault();
-}) */ 
+}) 
 
 
 
