@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Muli:wght@400;700&display=swap");
 
 :root {
-  --main-color: #aab1f3;
+  --main-color: #8890da;
 }
 
 * {
@@ -88,6 +88,9 @@ a:hover {
   font-size: 1.5rem;
   align-self: center;
 }
+.bold {
+  font-weight: 700;
+}
 .container {
   display: flex;
   flex-direction: column;
@@ -113,6 +116,9 @@ a:hover {
 .image:hover {
   transform: translateY(-2px);
   filter: drop-shadow(5px 5px 2px #111010);
+}
+.xkcd {
+  margin-bottom: 1rem;
 }
 footer {
   background-color: var(--main-color);
@@ -199,14 +205,21 @@ span {
 .rover-details {
   height: 100vh;
   margin-top: 5rem;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   align-self: center;
   max-width: 50%;
 }
 .rover-details p {
   margin-bottom: 0.5rem;
 }
-/* Add mediaqueries*/
+/* ABOUT.html */
+.about-cont {
+  margin: 2rem;
+}
+.about-cont p {
+  font-size: 1.25rem;
+}
+/* Mediaqueries*/
 @media only screen and (max-width: 992px) {
   .rover-details {
     max-width: 100%;
