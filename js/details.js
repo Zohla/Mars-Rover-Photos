@@ -2,7 +2,6 @@
 const querystring= document.location.search;
 const params = new URLSearchParams(querystring);
 const photoId = params.get('id');
-console.log(photoId)
 const rover = params.get('rover');
 const sol = params.get('sol')
 const apiKey = 'api_key=7C3efywnhiZulYlDVdUYW9M5u71tIS22nmcak61h'
@@ -26,13 +25,10 @@ async function getDetails() {
         let photo = result.photos;
         for (let i = 0; i < photo.length; i++) {
             const element = photo[i];
-            console.log(result)
-            console.log(element)
             if (element.id == photoId) {
                 displayPhoto = element.img_src;
-                console.log(element.id)
                 container.innerHTML = 
-                `<div class="card"><p>This picture was taken by ${element.rover.name} on ${element.earth_date}.<br> This image was shot with ${element.rover.name}s ${element.camera.full_name}. </p><div style="background-image: url('${displayPhoto}')"></div></div>`   
+                `<div class="card"><p>This picture was taken by ${element.rover.name} on ${element.earth_date}.<br> This image was shot with ${element.rover.name}'s ${element.camera.full_name}. </p><div style="background-image: url('${displayPhoto}')"></div></div>`   
                 heading.innerText =`Mars ${element.rover.name} Photos`
             }
         }

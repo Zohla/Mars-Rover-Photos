@@ -8,7 +8,6 @@ const adressLabel = document.querySelector('.adress-label');
 
 function validateName(){
     const nameField = document.querySelector('#name');
-    console.log(nameField.value)
     const nameRegEx =   /^[a-zA-ZæøåÆØÅ\s]*$/;
     let nameResult = nameRegEx.test(`${nameField.value}`)
 
@@ -17,7 +16,6 @@ function validateName(){
         return true;
     } else{
         nameField.classList.add('incorrect');
-        console.log(nameResult)
         return false;
     }
 }
@@ -98,11 +96,11 @@ function validateForm() {
 
  formContainer.addEventListener('submit', (e)=>{
     e.preventDefault();
+    //(hacky way of) showing and removing errormessages
     adressLabel.innerHTML = 'Adress:'
     mailLabel.innerHTML = 'Email:'
     subjectLabel.innerHTML='Subject:'
     nameLabel.innerHTML ='Name:'
-//!hacky way of showing and removing errormessages - fix!
     if (validateForm() == false){
     } else {
         formContainer.innerHTML= `<h3 class="succes-message">Your form is submitted. Thank you for reaching out to us!</h3>`

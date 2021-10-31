@@ -14,7 +14,6 @@ async function getSpace(){
         const response = await fetch(baseUrl);
         let jsonResults = await response.json();
         let photos= jsonResults.photos;
-        console.log(photos);
         loader.innerHTML=';'
         rover = photos[0].rover.name;
         earthDayContainer.innerHTML += `<p class="earth-day">Taken: ${photos[0].earth_date} by:  <a href="rover.html?rover=${photos[0].rover.name.toLowerCase()}" class="rover-link"> ${photos[0].rover.name}</a></p>`
@@ -33,14 +32,13 @@ async function getSpace(){
         } else{
             container.innerHTML = `<p class="error">Error: ${error.message}<p>`
         }
-
-        console.log(error)
     }
     
 }
 //Get result from choosing a rover and change baseUrl
+const roverSelect = document.querySelector('#rovers')
 let resultRover = 'Choose...';
- rovers.addEventListener('change', (event) => {
+ roverSelect.addEventListener('change', (event) => {
      
     resultRover = event.target.value;   
     baseUrl = `https://api.nasa.gov/mars-photos/api/v1/rovers/${resultRover}/photos?sol=100&api_key=7C3efywnhiZulYlDVdUYW9M5u71tIS22nmcak61h`
@@ -49,7 +47,7 @@ let resultRover = 'Choose...';
 
 //Get result from choosing a sol and add error if rover not chosen
 const solForm = document.querySelector('.sol-form');
-const roverSelect = document.querySelector('#rovers')
+
 
 solForm.addEventListener('change', (e) => {
     solDay = e.target.value;    
@@ -57,8 +55,6 @@ solForm.addEventListener('change', (e) => {
     let newUrl = new URL(`${baseUrl}`)
     newUrl.searchParams.set('sol', `${parsedSolInt}`)
     baseUrl = newUrl;
-    console.log(parsedSolInt)
-    console.log(newUrl)
     if (resultRover == 'Choose...') {
         container.innerHTML = `<p class="error">Please choose a rover</p>`
         roverSelect.style.borderColor='red';        

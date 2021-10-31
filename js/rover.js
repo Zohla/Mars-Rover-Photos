@@ -3,7 +3,6 @@ const querystring= document.location.search;
 const params = new URLSearchParams(querystring);
 const rover = params.get('rover');
 const roverHeader = document.querySelector('.roverHeader')
-console.log(rover);
 const apiUrl = `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}${apiKey}`
 const container = document.querySelector('.container')
 async function getRoverDetails() {
@@ -17,7 +16,6 @@ async function getRoverDetails() {
          container.innerHTML = `<div class="rover-details"><p>${roverName.name} was launched ${roverName.launch_date} and landed on Mars ${roverName.landing_date}.</p>
  <p>The rover has ${roverName.cameras.length} cameras and has taken a total of ${roverName.total_photos} photos in its time on Mars. The max sol to search for photos are: ${roverName.max_sol}.</p>
  <p>${roverName.name}s journey is ${roverName.status}.</p></div>`
-        console.log(roverName);
     
     }catch(error){
         container.innerHTML=`Something went wrong:${error.message}`
