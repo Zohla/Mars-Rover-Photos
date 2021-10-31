@@ -18,7 +18,7 @@ let displayPhoto='';
 const container = document.querySelector('.photo-container')
 
 async function getDetails() {
-    container.textContent = '';
+    container.innerHTML ='<p>Loading...</p>'
     try{
         const response = await fetch(apiUrl);
         const result = await response.json();
