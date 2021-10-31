@@ -6,7 +6,7 @@ const roverHeader = document.querySelector('.roverHeader')
 const apiUrl = `https://api.nasa.gov/mars-photos/api/v1/rovers/${rover}${apiKey}`
 const container = document.querySelector('.container')
 async function getRoverDetails() {
-    container.textContent = '';
+    container.innerHTML = '<p>Loading</p>';
     try{
         const response = await fetch(apiUrl);
         const result = await response.json();
