@@ -111,6 +111,7 @@ a:hover {
 .image {
   height: 30rem;
   width: 30rem;
+  
   background-repeat: no-repeat;
   margin: 1rem 0;
 }
@@ -224,5 +225,14 @@ span {
 @media only screen and (max-width: 992px) {
   .rover-details {
     max-width: 100%;
+  }
+  .container {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .image {
+    height: 20rem;
+    width: 20rem;
   }
 }
