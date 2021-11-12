@@ -231,7 +231,8 @@ span {
   }
 }
 @media only screen and (max-width: 600px) {
-  .image {
+  .image,
+  .card div{
     height: 20rem;
     width: 20rem;
   }
