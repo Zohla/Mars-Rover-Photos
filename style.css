@@ -76,7 +76,9 @@ a:visited {
 a:hover {
   text-decoration: underline 2px solid;
 }
-
+.loader {
+  margin: 2rem;
+}
 #rovers,
 #sol {
   appearance: none;
@@ -141,7 +143,8 @@ a:hover {
   flex-direction: column;
   align-items: center;
   padding: 1rem;
-  width: 100%;
+  margin: 2rem 0;
+  border: 2px solid var(--green);
 }
 .selectors label {
   color: var(--light);

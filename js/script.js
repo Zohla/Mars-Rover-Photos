@@ -3,9 +3,11 @@ const container = document.querySelector(".container");
 const loader = document.querySelector(".loader");
 const sol = document.getElementById("sol");
 const earthDayContainer = document.querySelector(".earth-day");
-loader.innerHTML = `<p class= 'choose'>Choose a rover to see pictures they have taken on their x'th day(sol) on mars</p>`;
+const roverSelect = document.querySelector("#rovers");
+
 let solDay = 100;
 let rover;
+
 async function getSpace() {
   container.textContent = "";
   earthDayContainer.textContent = "";
@@ -14,32 +16,35 @@ async function getSpace() {
     const response = await fetch(baseUrl);
     let jsonResults = await response.json();
     let photos = jsonResults.photos;
-    loader.innerHTML = ";";
-    rover = photos[0].rover.name;
-    earthDayContainer.innerHTML += `<p class="earth-day">Taken: ${
-      photos[0].earth_date
-    } by:  <a href="rover.html?rover=${photos[0].rover.name.toLowerCase()}" class="rover-link"> ${
-      photos[0].rover.name
-    }</a></p>`;
-
-    for (let i = 0; i < photos.length; i++) {
-      const element = photos[i];
-      //Adds limit to photos shown
-      if (i > 10) {
-        break;
-      }
-      container.innerHTML += `<a href="details.html?id=${element.id}&rover=${resultRover}&sol=${solDay}" class="image" style="background-image: url('${element.img_src}')"></a>`;
-    }
+    createHTML(photos);
   } catch (error) {
     if (error.message.startsWith("Cannot read properties of undefined")) {
-      container.innerHTML = `<p>Sorry, it looks like there's no pictures from ${rover}</a> at sol ${solDay}. The rovers don't have pictures from all days(sols), but the max sol for this rover can be found<a href="rover.html?rover=${rover.toLowerCase()}" class="bold">here</a>.</p>`;
+      container.innerHTML = `<p>Sorry, it looks like there's no pictures from ${rover}at sol ${solDay}. The rovers don't have pictures from all days(sols), but the max sol for this rover can be found<a href="rover.html?rover=${rover.toLowerCase()}" class="bold">here</a>.</p>`;
     } else {
       container.innerHTML = `<p class="error">Error: ${error.message}<p>`;
     }
   }
 }
+
+function createHTML(photos) {
+  loader.innerHTML = " ";
+  rover = photos[0].rover.name;
+  earthDayContainer.innerHTML += `<p class="earth-day">Taken: ${
+    photos[0].earth_date
+  } by:  <a href="rover.html?rover=${photos[0].rover.name.toLowerCase()}" class="rover-link"> ${
+    photos[0].rover.name
+  }</a></p>`;
+
+  for (let i = 0; i < photos.length; i++) {
+    const element = photos[i];
+    //Adds limit to photos shown
+    if (i > 10) {
+      break;
+    }
+    container.innerHTML += `<a href="details.html?id=${element.id}&rover=${resultRover}&sol=${solDay}" class="image" style="background-image: url('${element.img_src}')"></a>`;
+  }
+}
 //Get result from choosing a rover and change baseUrl
-const roverSelect = document.querySelector("#rovers");
 let resultRover = "Choose...";
 roverSelect.addEventListener("change", (event) => {
   resultRover = event.target.value;
@@ -68,10 +73,3 @@ solForm.addEventListener("change", (e) => {
 solForm.addEventListener("submit", (e) => {
   e.preventDefault();
 });
-
-//! Make a function to add html
-
-/* function createHTML(jsonResults){
-
-
-} */
