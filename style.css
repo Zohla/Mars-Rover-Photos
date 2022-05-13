@@ -63,6 +63,7 @@ main {
 }
 p {
   color: var(--light);
+  max-width: 700px;
 }
 a {
   margin-left: 0.25rem;
