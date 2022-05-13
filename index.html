@@ -15,8 +15,8 @@
             <a href="about.html"><li>About</li></a>
         </ul>
     </nav>
-    <h1>Mars Rover Photos</h1>
-    <div class="main">
+    <section class="main">
+        <h1>Mars Rover Photos</h1>
         <div class="selectors">
             <label for="rovers">Select a rover</label>
             <select name="rovers" id="rovers">
@@ -25,20 +25,21 @@
                 <option value="opportunity">Opportunity</option>
                 <option value="spirit">Spirit</option>
                 <option value="perseverance">Perseverance</option>
+                <span class="focus"></span>
             </select>
-            <form action="/" class="sol-form"  >
+            <form action="" class="sol-form"  >
                 <label for="sol">Choose sol</label>
                 <input name="sol" id="sol" type="number" value="100" min="1">
             </form>
         </div>
         <div class="loader"></div>
         <div class="earth-day"></div>
-        <div class="container">
+        <div class="container xkcd-img">
             <img src="https://imgs.xkcd.com/comics/curiosity.png" alt="an xkcd comic about mars rovers" class="xkcd">
         </div>
-    </div>
+    </section>
     <footer>
-        <p>Mars Rover Photos</p> 
+        <p>&copy; Maren Lilleberre 2021</p> 
     </footer>
     <script src="js/script.js"></script>
 </body>
